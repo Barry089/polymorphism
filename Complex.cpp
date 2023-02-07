@@ -9,19 +9,19 @@ class Complex {
     public:
         Complex(double real = 0.0, double image = 0.0)
         {
-            cout << "constructing " << endl;
+            // cout << "constructing " << endl;
             this->real = real, this->image = image;
         }
         Complex(Complex& RC)
         {
-            cout << "copy constructing ..." << endl;
+            // cout << "copy constructing ..." << endl;
             real = RC.real;
             image = RC.image;
         }
         ~Complex()
         {
-            cout << real << endl;
-            cout << "destrucing ..." << endl;
+            // cout << real << endl;
+            // cout << "destrucing ..." << endl;
         }
         void display()
         {
@@ -55,9 +55,21 @@ Complex Complex::operator++ (int)
 }
 int main()
 {
-    Complex A(100.0, 200.0), B(10.0, 20.0), C;
+    Complex A(100.0, 200.0), B(-10.0, 20.0), C;
     
     C = A + B;  // A + B 在编译的时候被编译成 A.operator+ (B), 然后匹配调用对应的重载函数；
     C.display();
+    C = A - B;
+    C.display();
+    C = -A + B;
+    C.display();
+
+    C = A++;
+    C.display();
+    C = ++A;
+    C.display();
+    C = A + 5;
+    C.display();
+
     return 0;
 }
